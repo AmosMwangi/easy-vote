@@ -17,8 +17,3 @@ class MyComment(FlaskForm):
     comment = TextAreaField('Your comment',validators=[Required()])
     submit = SubmitField('submit')
 
-class UpVote(FlaskForm):
-    upvote = SubmitField('submit')
-
-class DownVote(FlaskForm):
-    downvote = SubmitField('submit')
