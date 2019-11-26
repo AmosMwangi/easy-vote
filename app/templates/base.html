@@ -1,23 +1,82 @@
-<html>
-{%block styles%}
-<!--bootsrap cdn-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<!--google fonts-->
-<!--font awesome-->
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {%block styles%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% endblock %}
+    <title>Easy Pitch Vote</title>
+</head>
+
+<style>
+body{
+    background-color: rgb(218, 218, 248);
+}
+#card-info{
+    transition: all .6s ease-in-out !important;
+    height: 290px;
+    margin-top: 5px;
+}
+#card-info:hover{
+    -ms-transform: scale(1.1) !important;
+    -webkit-transform: scale(1.1) !important;
+    transform: scale(1.1) !important;
+    background-color: rgb(214, 245, 255);
+    box-shadow: 0 8px 6px -6px black;
+}
+</style>
 <body>
+    <!-- navbar -->
     {%block navbar%}
     {%include 'navbar.html'%}
     {% endblock %}
+
+    <!-- main content -->
     {%block content%}
     {% endblock %}
 
+    <!-- block for pitches -->
     {%block pitches%}
-
     {% endblock %}
+
 </body>
 
 
+{%block scripts%}
+<script>
+    function myAccFunc() {
+        var x = document.getElementById("demoAcc");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+            x.previousElementSibling.className += " w3-green";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+            x.previousElementSibling.className =
+                x.previousElementSibling.className.replace(" w3-green", "");
+        }
+    }
+
+    function myDropFunc() {
+        var x = document.getElementById("demoDrop");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+            x.previousElementSibling.className += " w3-green";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+            x.previousElementSibling.className =
+                x.previousElementSibling.className.replace(" w3-green", "");
+        }
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{% endblock %}
+
 </html>
+

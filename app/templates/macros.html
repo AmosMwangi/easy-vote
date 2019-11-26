@@ -2,39 +2,20 @@
 <div class="row">
     {%if category_list%}
     {%for category in category_list%}
-    <div class="col-md-4">
-        <div class="thumbnail text-center">
-            <h5>{{category.title}}</h5>
-            <h5>{{category.category}}</h5>
+    <div class="col-md-3">
+        <div class="card" style="width: 17.5rem;" id="card-info">
             <div class="card-body">
-                <h2>{{category.description}}</h2>
-                <p>posted by: {{category.user.username}}</p>
+                <h3 class="card-title">{{category.title}}</h3>
+                <h5 class="card-subtitle mb-2 ">{{category.category}}</h5>
+                <p class="card-text"> {{category.description}} </p>
+                <p class="card-text text-muted"><b>~ {{category.user.username}}</b> </p>
+                <a href="{{url_for('main.new_comment',pitch_id=category.id)}}"><button class="btn btn-primary">comment</button></a>
             </div>
-            <a href="{{url_for('main.new_comment',pitch_id=category.id)}}"><button
-                    class="btn btn-primary">Comment</button></a>
-            <a href="{{url_for('main.upvote',pitch_id=category.id)}}"><button
-                    class="btn btn-primary">Upvote</button></a>
-            <a href="{{url_for('main.downvote',pitch_id=category.id)}}"><button
-                    class="btn btn-primary">Downvote</button></a>
         </div>
+        <br>
     </div>
     {%endfor%}
     {%else%}
     {%endif%}
 </div>
 {% endmacro %}
-
-{%macro displayComment(comments)%}
-<ul>
-    {%if comments%}
-    {%for comment in comments%}
-    <div class="row text-center">
-        <p>{{comment.description}}</p>
-        <p>Posted by: {{comment.user.username}}</p>
-    </div>
-    {%endfor%}
-    {%else%}
-    <p>This post has no comments yet.</p>
-    {%endif%}
-</ul>
-{%endmacro%}

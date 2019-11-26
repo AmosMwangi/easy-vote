@@ -1,24 +1,74 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Easy Pitch Vote</title>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<style>
+  .navbar-custom {
+    background-color: #1b60c7;
+  }
+
+  /* change the brand and text color */
+  .navbar-custom .navbar-brand,
+  .navbar-custom .navbar-text {
+    color: rgba(255, 255, 255, .8);
+  }
+
+  /* change the link color */
+  .navbar-custom .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  /* change the color of active or hovered links */
+  .navbar-custom .nav-item.active .nav-link,
+  .navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+  }
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-custom">
+    <div class="container">
+      <a href="/" class="navbar-brand" style="color: white">Easy Pitch Vote</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
+        <i class="fa fa-bars fa-lg py-1 text-white"></i>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarCustom">
+        <span class="ml-auto navbar-text">
+          {%if current_user.is_authenticated%}
+          <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item" style="color: white">
+                <h6> <i class="fa fa-user" aria-hidden="true"></i> {{current_user.username}}</h6>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/pitches/new/"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create Pitch</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('auth.logout')}}"> <i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
+              </li>
+            </ul>
+          </div>
+          {% else %}
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url_for('auth.login')}}">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for('auth.login')}}">Login</a>
-            </li>
-        </ul>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url_for('auth.register')}}">Sign Up</a>
+              </li>
+          </ul>
+          {% endif %}
+        </span>
+      </div>
     </div>
-    {%if current_user.is_authenticated%}
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="color: white">
-               <h3> {{current_user.username}}</h3>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for('auth.logout')}}">Sign out</a>
-            </li>
-        </ul>
-    </div>
-    {%endif%}
-</nav>
+  </nav>
+</body>
+
+</html>
