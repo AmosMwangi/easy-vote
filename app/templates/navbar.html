@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Easy Pitch Vote</title>
+  <title>San Pitch</title>
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Mystery+Quest&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">
 </head>
 
 <style>
@@ -35,7 +37,7 @@
 <body>
   <nav class="navbar navbar-expand-sm navbar-custom">
     <div class="container">
-      <a href="/" class="navbar-brand" style="color: white">Easy Pitch Vote</a>
+      <a href="/" class="navbar-brand wow rubberBand" style="color: white; font-family: 'Mystery Quest', cursive; font-size: 30px;">San Pitch</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
         <i class="fa fa-bars fa-lg py-1 text-white"></i>
       </button>
@@ -48,10 +50,12 @@
                 <h6> <i class="fa fa-user" aria-hidden="true"></i> {{current_user.username}}</h6>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/pitches/new/"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create Pitch</a>
+                <a class="nav-link" href="/pitches/new/"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  Create Pitch</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{url_for('auth.logout')}}"> <i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
+                <a class="nav-link" href="{{url_for('auth.logout')}}"> <i class="fa fa-power-off"
+                    aria-hidden="true"></i> Sign Out</a>
               </li>
             </ul>
           </div>
@@ -61,14 +65,18 @@
               <a class="nav-link" href="{{url_for('auth.login')}}">Login</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{url_for('auth.register')}}">Sign Up</a>
-              </li>
+              <a class="nav-link" href="{{url_for('auth.register')}}">Sign Up</a>
+            </li>
           </ul>
           {% endif %}
         </span>
       </div>
     </div>
   </nav>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
 </body>
 
 </html>
